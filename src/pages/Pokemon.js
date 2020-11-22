@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 
 import axios from "axios";
 
-import { Button, Accordion, Card } from "react-bootstrap";
+import { Accordion, Card } from "react-bootstrap";
+
+import Button from "@material-ui/core/Button";
+
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -42,10 +45,10 @@ export default function Pokemon(props) {
         </Row>
         <Row>
           <Col md={6}>
-            <Button variant="light">Like</Button>{" "}
+            <Button variant="contained">Like</Button>{" "}
           </Col>
           <Col md={6}>
-            <Button variant="light">Rotate</Button>{" "}
+            <Button variant="contained">Rotate</Button>{" "}
           </Col>
         </Row>
       </Container>
