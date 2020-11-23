@@ -10,11 +10,6 @@ export default function Saludar(props) {
     console.log("Total de clicks " + contar);
   }, [contar]);
 
-  // let { name = "Anonimo", age } = props.userInfo;
-  let saludar = props.saludar;
-
-  // const onOff = () => setStateCar(!stateCar);
-  // const onOff = () => setStateCar(prevState => !prevState);
   const onOff = () => {
     setStateCar(!stateCar), setContar(contar + 1);
   };
@@ -29,18 +24,3 @@ export default function Saludar(props) {
     </div>
   );
 }
-
-// return (
-//   <div>
-//     <h2>
-//       Hola {name} tiene {age} años
-//     </h2>
-//     <button className="btn btn-primary" onClick={onOff}>
-//       Saludar
-//     </button>
-//   </div>
-// );
-
-// <button className="btn btn-primary" onClick={() => saludar(name)}>
-//   Saludar
-// </button>

@@ -19,11 +19,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-    margin: "10px -5px",
-    cursor: "context-menu"
+    margin: "10px -5px"
   },
   media: {
-    height: 120
+    height: 120,
+    cursor: "context-menu"
   },
   avatar: {
     width: "60px",
@@ -79,7 +79,7 @@ export default function Pokemon(props) {
   });
 
   return (
-    <Card className={classes.root} onContextMenu={openMenu}>
+    <Card className={classes.root}>
       <CardActionArea>
         <CardHeader
           avatar={
@@ -93,12 +93,27 @@ export default function Pokemon(props) {
           subheader={pokemon.name}
         />
         <CardMedia
+          onContextMenu={openMenu}
           component="img"
           alt="Contemplative pokemon"
           // image={image}
           image={rotate ? images.front_default : images.back_default}
           title={pokemon.name}
         />
+        <Menu
+          keepMounted
+          open={stateMouse.mouseY !== null}
+          onClose={closeMenu}
+          anchorReference="anchorPosition"
+          anchorPosition={
+            stateMouse.mouseY !== null && stateMouse.mouseX !== null
+              ? { top: stateMouse.mouseY, left: stateMouse.mouseX }
+              : undefined
+          }
+        >
+          <MenuItem onClick={closeMenu}>Copy</MenuItem>
+          <MenuItem onClick={closeMenu}>Print</MenuItem>
+        </Menu>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {pokemon.name}
@@ -109,29 +124,18 @@ export default function Pokemon(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" variant="primary">
+        <Button size="small" variant="contained" color="primary">
           Like
         </Button>
-        <Button size="small" variant="primary" onClick={rotateImage}>
+        <Button
+          size="small"
+          variant="contained"
+          color="primary"
+          onClick={rotateImage}
+        >
           Rotate
         </Button>
       </CardActions>
-      <Menu
-        keepMounted
-        open={stateMouse.mouseY !== null}
-        onClose={closeMenu}
-        anchorReference="anchorPosition"
-        anchorPosition={
-          stateMouse.mouseY !== null && stateMouse.mouseX !== null
-            ? { top: stateMouse.mouseY, left: stateMouse.mouseX }
-            : undefined
-        }
-      >
-        <MenuItem onClick={closeMenu}>Copy</MenuItem>
-        <MenuItem onClick={closeMenu}>Print</MenuItem>
-        <MenuItem onClick={closeMenu}>Highlight</MenuItem>
-        <MenuItem onClick={closeMenu}>Email</MenuItem>
-      </Menu>
     </Card>
   );
 }
