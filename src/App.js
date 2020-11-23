@@ -19,7 +19,6 @@ export default function App() {
   const pokemonsListado = async () => {
     const req = await axios.get(url);
     const pokemones = await req.data.results;
-    // console.log(pokemones);
     setPokemones(pokemones);
   };
 
@@ -30,7 +29,7 @@ export default function App() {
   return (
     <>
       <Router>
-        <Link to="/">
+        <Link to="/home">
           <Button>Home</Button>
         </Link>
         <Link to="/about">
@@ -44,6 +43,9 @@ export default function App() {
         </Link>
 
         <Switch>
+          <Route path="/home">
+            <Saludar />
+          </Route>
           <Route path="/about">
             <About />
           </Route>
@@ -51,12 +53,10 @@ export default function App() {
             <Contacto />
           </Route>
           <Route path="/pokemons">
-            <ListPokemon pokemons={pokemons} />;
+            <ListPokemon pokemons={pokemons} />
           </Route>
         </Switch>
       </Router>
-
-      <Saludar />
     </>
   );
 }
