@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 import axios from "axios";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import { Button, Accordion, Card } from "react-bootstrap";
-
 import "./style.css";
 
 import Saludar from "./SaludarComponent";
-
 import Contacto from "./pages/Contacto";
 import About from "./pages/About";
 import ListPokemon from "./pages/ListPokemon";
@@ -23,7 +19,7 @@ export default function App() {
   const pokemonsListado = async () => {
     const req = await axios.get(url);
     const pokemones = await req.data.results;
-    console.log(pokemones);
+    // console.log(pokemones);
     setPokemones(pokemones);
   };
 
