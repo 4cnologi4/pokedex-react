@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
 import Saludar from "./SaludarComponent";
+import ContextMenu from "./pages/ContextMenu";
 import Contacto from "./pages/Contacto";
 import About from "./pages/About";
 import ListPokemon from "./pages/ListPokemon";
@@ -45,6 +46,7 @@ export default function App() {
         <Switch>
           <Route path="/home">
             <Saludar />
+            <ContextMenu />
           </Route>
           <Route path="/about">
             <About />
